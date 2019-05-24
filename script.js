@@ -77,5 +77,6 @@ function mousePressed() {
     arr = [x, y];
     //console.log(arr);
     socket.emit("Sxmvec", arr)
+    socket.on("matrix", matrix)
 
 }
