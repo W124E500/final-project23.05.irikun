@@ -160,116 +160,112 @@ Random = function (arr) {
 }
 //connectiona stexcum scriptic ekac infoi himan vra script.js i het mousePressed i jamanak
 io.on('connection', function (socket) {
-
-    socket.on("Sxmvec", function (arr) {
-        directions = [
-            [x, y]
-            [x - 1, y - 1],
-            [x, y - 1],
-            [x + 1, y - 1],
-            [x - 1, y],
-            [x + 1, y],
-            [x - 1, y + 1],
-            [x, y + 1],
-            [x + 1, y + 1]
-        ];
-
-        X = arr[0];
-        Y = arr[1];
-
-       
-
-        if (matrix[Y][X] = 1) {
+socket.on("Sxmvec", function (arr)  {
+    directions = [
+        [x, y]
+        [x - 1, y - 1],
+        [x, y - 1],
+        [x + 1, y - 1],
+        [x - 1, y],
+        [x + 1, y],
+        [x - 1, y + 1],
+        [x, y + 1],
+        [x + 1, y + 1]
+    ];
+    X = arr[0];
+    Y = arr[1];
+    if(harevanx>=0 && matrix[0].length && harevany>=0 && matrix[1].length){
+    if (matrix[Y][X] = 1) {
+        for (var i in grassArr) {
+            if (X == grassArr[i].x && Y == grassArr[i].y) {
+                grassArr.splice(i, 1);
+                break;
+            }
+        }
+    }
+    else if (matrix[Y][X] = 2) {   
+        for (var i in geArr) {
+            if (X== geArr[i].x && Y == geArr[i].y) {
+                geArr.splice(i, 1);
+                break;
+            }
+        }
+    }
+    else if (matrix[Y][X] = 3) {
+        for (var i in predatorArr) {
+            if (X== predatorArr[i].x && Y == predatorArr[i].y) {
+                predatorArr.splice(i, 1);
+                break;
+            }
+        }
+    }
+    else if (matrix[Y][X] = 4) {
+        for (var i in xotaqaylArr) {
+            if (X== xotaqaylArr[i].x && Y == xotaqaylArr[i].y) {
+                xotaqaylArr.splice(i, 1);
+                break;
+            }
+        }
+    }
+    else if (matrix[Y][X] = 5) {
+        for (var i in xotaqaylEaterArr) {
+            if (X == xotaqaylEaterArr[i].x && Y == xotaqaylEaterArr[i].y) {
+                xotaqaylEaterArr.splice(i, 1);
+                break;
+            }
+        }
+    }
+    matrix[Y][X] = 0;
+    io.sockets.emit("matrix", Matrix)
+    }
+    
+    for (var i in directions){
+    var harevanx = directions[i][0];
+    var harevany = directions[i][1];
+    if(harevanx>=0 && matrix[0].length && harevany>=0 && matrix[1].length){
+        if (matrix[harevany][harevanx] = 1) {
             for (var i in grassArr) {
-                if (X == grassArr[i].x && Y == grassArr[i].y) {
+                if (harevanx == grassArr[i].x && harevany == grassArr[i].y) {
                     grassArr.splice(i, 1);
                     break;
                 }
             }
         }
-        else if (matrix[Y][X] = 2) {   
+        else if (matrix[harevany][harevanx] = 2) {   
             for (var i in geArr) {
-                if (X== geArr[i].x && Y == geArr[i].y) {
+                if (harevanx== geArr[i].x && harevany == geArr[i].y) {
                     geArr.splice(i, 1);
                     break;
                 }
             }
         }
-        else if (matrix[Y][X] = 3) {
+        else if (matrix[harevany][harevanx]  = 3) {
             for (var i in predatorArr) {
-                if (X== predatorArr[i].x && Y == predatorArr[i].y) {
+                if (harevanx== predatorArr[i].x && harevany == predatorArr[i].y) {
                     predatorArr.splice(i, 1);
                     break;
                 }
             }
         }
-        else if (matrix[Y][X] = 4) {
+        else if (matrix[harevany][harevanx]  = 4) {
             for (var i in xotaqaylArr) {
-                if (X== xotaqaylArr[i].x && Y == xotaqaylArr[i].y) {
+                if (harevanx== xotaqaylArr[i].x && harevany == xotaqaylArr[i].y) {
                     xotaqaylArr.splice(i, 1);
                     break;
                 }
             }
         }
-        else if (matrix[Y][X] = 5) {
+        else if (matrix[harevany][harevanx]  = 5) {
             for (var i in xotaqaylEaterArr) {
-                if (X == xotaqaylEaterArr[i].x && Y == xotaqaylEaterArr[i].y) {
+                if (harevanx == xotaqaylEaterArr[i].x && harevany == xotaqaylEaterArr[i].y) {
                     xotaqaylEaterArr.splice(i, 1);
                     break;
                 }
             }
         }
-        matrix[Y][X] = 0;
-    
-        
-        for (var i in directions){
-        var harevanx = directions[i][0];
-        var harevany = directions[i][1];
-        if(harevanx>=0 && matrix[0].length && harevany>=0 && matrix[1].length){
-        //     if (matrix[Y][X] = 1) {
-        //         for (var i in grassArr) {
-        //             if (X == grassArr[i].x && Y == grassArr[i].y) {
-        //                 grassArr.splice(i, 1);
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     else if (matrix[Y][X] = 2) {   
-        //         for (var i in geArr) {
-        //             if (X== geArr[i].x && Y == geArr[i].y) {
-        //                 geArr.splice(i, 1);
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     else if (matrix[Y][X] = 3) {
-        //         for (var i in predatorArr) {
-        //             if (X== predatorArr[i].x && Y == predatorArr[i].y) {
-        //                 predatorArr.splice(i, 1);
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     else if (matrix[Y][X] = 4) {
-        //         for (var i in xotaqaylArr) {
-        //             if (X== xotaqaylArr[i].x && Y == xotaqaylArr[i].y) {
-        //                 xotaqaylArr.splice(i, 1);
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     else if (matrix[Y][X] = 5) {
-        //         for (var i in xotaqaylEaterArr) {
-        //             if (X == xotaqaylEaterArr[i].x && Y == xotaqaylEaterArr[i].y) {
-        //                 xotaqaylEaterArr.splice(i, 1);
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     matrix[Y][X] = 0;
-
-        // }
-        
+        matrix[harevany][harevanx] = 0;
+        io.sockets.emit("matrix", matrix)
+    }
     });
     
 });
