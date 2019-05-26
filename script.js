@@ -70,13 +70,16 @@ function drawMatrix(matrix) {
 
 socket.on("matrix", drawMatrix)
 socket.on("exanak", drawWeather)
-//function event kisata grac serverum el code petqa grvi sa vorpes hushum
 function mousePressed() {
     var x = Math.floor(mouseX / side);
     var y = Math.floor(mouseY / side);
     arr = [x, y];
-    //console.log(arr);
+    console.log(arr);
     socket.emit("Sxmvec", arr)
-    socket.on("matrix", matrix)
-
 }
+function killer(){
+    socket.emit("Sxmvec1")
+}
+
+
+
